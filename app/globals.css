@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 9 9 16;
+  --foreground: 240 242 248;
+  --muted: 24 24 35;
+  --muted-foreground: 156 163 175;
+  --border: 39 39 55;
+  --card: 17 17 27;
+  --accent: 99 102 241;
+
+  --font-sans: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f0abfc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-lime {
+    background: linear-gradient(135deg, #a3e635 0%, #4ade80 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-glass {
+    background: rgba(17, 17, 27, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2),
+      0 0 40px -10px rgba(99, 102, 241, 0.4);
+  }
+
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
+  }
+
+  .mask-fade-right {
+    mask-image: linear-gradient(to right, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent);
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom selection */
+::selection {
+  background-color: rgba(129, 140, 248, 0.3);
+  color: white;
+}
+
+/* Smooth gradient backgrounds */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 800px 500px at 50% -10%, rgba(99, 102, 241, 0.25), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(168, 85, 247, 0.15), transparent 50%),
+    radial-gradient(ellipse 600px 400px at 90% 30%, rgba(236, 72, 153, 0.1), transparent 50%);
+}
+
+.section-divider {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(99, 102, 241, 0.3),
+    transparent
+  );
+  height: 1px;
+  width: 100%;
+}
+
+/* Animated dot pattern */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Reveal-on-scroll initial state (toggled by IntersectionObserver) */
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="100"] {
+  transition-delay: 100ms;
+}
+[data-reveal-delay="200"] {
+  transition-delay: 200ms;
+}
+[data-reveal-delay="300"] {
+  transition-delay: 300ms;
+}
+[data-reveal-delay="400"] {
+  transition-delay: 400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal="hidden"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-blob-1,
+  .animate-blob-2,
+  .animate-blob-3,
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-pulse-glow,
+  .animate-ping-soft,
+  .animate-spotlight {
+    animation: none !important;
+  }
+}
+
+/* Hover lift utility */
+.hover-lift {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.4s ease;
+  will-change: transform;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Animated conic-gradient border */
+.border-conic {
+  position: relative;
+  isolation: isolate;
+}
+.border-conic::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    rgba(99, 102, 241, 0.6) 80deg,
+    rgba(217, 70, 239, 0.6) 160deg,
+    transparent 240deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: angle-spin 8s linear infinite;
+  z-index: -1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes angle-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Typing indicator dots */
+.typing-dots span {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Caret for typewriter effect */
+.caret::after {
+  content: "▍";
+  display: inline-block;
+  margin-left: 2px;
+  color: rgb(129 140 248);
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Ping ring */
+.ping-ring {
+  position: relative;
+}
+.ping-ring::before,
+.ping-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.5;
+  animation: ping-soft 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.ping-ring::after {
+  animation-delay: 1.25s;
+}
+
+/* Gradient text that animates */
+.text-gradient-animated {
+  background: linear-gradient(
+    120deg,
+    #818cf8,
+    #c084fc,
+    #f0abfc,
+    #818cf8
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #d946ef);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* Staggered entrance — set only animation-delay inline for hydration safety */
+.animate-fade-up-stagger {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.animate-grow-bar-x {
+  transform-origin: left;
+  animation: grow-bar-x 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
