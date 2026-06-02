@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollProgressClient } from "@/components/scroll-progress-client";
 import { brand } from "@/lib/brand";
+import { assetPath } from "@/lib/asset-path";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://kotchamon-20.github.io/unix29",
   ),
   icons: {
-    icon: "/Logo.jpg",
-    apple: "/Logo.jpg",
+    icon: assetPath("/Logo.jpg"),
+    apple: assetPath("/Logo.jpg"),
   },
   title: {
     default: `${brand.portal} — Modern Business Operations & Automation Ecosystem`,

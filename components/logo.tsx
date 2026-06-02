@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset-path";
 import { cn } from "@/lib/utils";
 
 type LogoProps = {
@@ -20,7 +21,7 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
       <Image
-        src="/Logo.jpg"
+        src={assetPath("/Logo.jpg")}
         alt="The Klaus Way logo"
         width={width}
         height={height}
