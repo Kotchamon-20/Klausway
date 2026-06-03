@@ -1,5 +1,6 @@
 export const brand = {
   name: "Klaus Way",
-  portal: "Klaus Way Apps Portal",
-  portalShort: "Klaus Way Portal",
+  tagline: "Powering what's next for the business",
+  portal: "Klaus Way",
+  portalShort: "Klaus Way",
 } as const;

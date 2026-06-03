@@ -2,7 +2,9 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, CircleCheck } from "lucide-react";
 import { ShowcaseDashboardAll } from "./showcase-dashboard-all";
 import { AmbientBackground } from "./animation/ambient-background";
+import { portfolioProjects } from "@/lib/portfolio";
 import { routes } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -15,14 +17,14 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-4xl text-center">
           <Link
-            href={routes.apps}
+            href={routes.portfolio}
             className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur transition-all hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:text-foreground animate-fade-up"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inset-0 rounded-full bg-lime-400/70 animate-ping-soft" />
               <span className="relative h-1.5 w-1.5 rounded-full bg-lime-400 shadow-[0_0_8px_rgba(163,230,53,0.8)]" />
             </span>
-            Klaus Way Apps Portal — one gateway for your entire business stack
+            Powering what&apos;s next for the business
             <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
           </Link>
 
@@ -30,18 +32,18 @@ export function Hero() {
             className="mt-8 text-balance text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl animate-fade-up-stagger"
             style={{ animationDelay: "100ms" }}
           >
-            The central gateway for
+            Custom applications
             <br />
-            <span className="text-gradient-animated">modern business operations</span>
+            <span className="text-gradient-animated">built for how you work</span>
           </h1>
 
           <p
             className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl animate-fade-up-stagger"
             style={{ animationDelay: "250ms" }}
           >
-            Automation, CRM, AI voice, developer tools, and finance —
-            <br />
-            connected in one seamless workflow ecosystem.
+            Standalone systems for CRM, reporting, payments, inventory, e-signing,
+            fleet tracking, and AI — each tailored to your business, not bundled
+            into one generic platform.
           </p>
 
           <div
@@ -49,18 +51,18 @@ export function Hero() {
             style={{ animationDelay: "400ms" }}
           >
             <Link
-              href={routes.pricing}
+              href={routes.contact}
               className="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-white/20 active:scale-100"
             >
-              Access the Portal
+              Get a Free Consultation
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="#features"
+              href="#products"
               className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-all hover:border-white/20 hover:bg-white/10"
             >
               <Sparkles className="h-4 w-4 text-brand-300 transition-transform group-hover:rotate-12" />
-              Explore all apps
+              Explore our products
             </Link>
           </div>
 
@@ -70,15 +72,15 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-1.5">
               <CircleCheck className="h-3.5 w-3.5 text-lime-400" />
-              9 integrated apps
+              {portfolioProjects.length} standalone systems
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CircleCheck className="h-3.5 w-3.5 text-lime-400" />
-              Single sign-on access
+              24/7 expert support
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CircleCheck className="h-3.5 w-3.5 text-lime-400" />
-              Built for any industry
+              Enterprise-grade security
             </span>
           </div>
         </div>
@@ -97,36 +99,24 @@ export function Hero() {
   );
 }
 
-const products = [
-  { label: "Klaus Connect", color: "from-blue-400 to-cyan-400", id: "klaus-connect" },
-  { label: "Admin & Reports", color: "from-violet-400 to-purple-400", id: "klaus-admin" },
-  { label: "Customer Portal", color: "from-fuchsia-400 to-pink-400", id: "customer-portal" },
-  { label: "CRM Intelligence", color: "from-amber-400 to-orange-400", id: "crm-intelligence" },
-  { label: "n8n Console", color: "from-emerald-400 to-teal-400", id: "n8n-console" },
-  { label: "FileMaker Tools", color: "from-rose-400 to-red-400", id: "filemaker" },
-  { label: "MailAgent", color: "from-indigo-400 to-blue-400", id: "mailagent" },
-  { label: "Spendledger", color: "from-lime-400 to-green-400", id: "spendledger" },
-  { label: "Field Apps", color: "from-cyan-400 to-sky-400", id: "field-apps" },
-];
-
 function ProductGridLinks() {
   return (
-    <div className="mx-auto mt-20 grid max-w-5xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-3">
-      {products.map((p, i) => (
+    <div className="mx-auto mt-20 grid max-w-5xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+      {portfolioProjects.map((project, i) => (
         <Link
-          key={p.label}
-          href={`#${p.id}`}
-          className="hover-lift group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3 transition-all hover:border-white/10 hover:bg-white/[0.04] animate-fade-up-stagger"
-          style={{ animationDelay: `${i * 50}ms` }}
+          key={project.id}
+          href={`#${project.id}`}
+          className="hover-lift group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] px-3 py-3 transition-all hover:border-white/10 hover:bg-white/[0.04] animate-fade-up-stagger"
+          style={{ animationDelay: `${i * 40}ms` }}
         >
           <span
-            className={`absolute inset-x-0 -bottom-px h-px bg-gradient-to-r ${p.color} opacity-0 transition-opacity group-hover:opacity-100`}
+            className={cn(
+              "absolute inset-x-0 -bottom-px h-px bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100",
+              project.accent,
+            )}
           />
-          <span
-            className={`pointer-events-none absolute -left-10 top-0 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:left-full group-hover:opacity-100`}
-          />
-          <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
-            {p.label}
+          <span className="line-clamp-2 text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+            {project.title}
           </span>
         </Link>
       ))}

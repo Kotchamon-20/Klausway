@@ -1,52 +1,51 @@
 export const routes = {
   home: "/",
+  about: "/about",
   apps: "/apps",
+  blog: "/blog",
   pricing: "/pricing",
-  integrations: "/integrations",
-  docs: "/docs",
+  portfolio: "/portfolio",
+  contact: "/contact",
 } as const;
 
 export type RouteKey = keyof typeof routes;
 
 export const navItems = [
-  {
-    label: "Apps",
-    href: routes.apps,
-    hasDropdown: true,
-    children: [
-      { label: "Universal CRM & Core", href: `${routes.apps}#pillar-1` },
-      { label: "AI & Automation", href: `${routes.apps}#pillar-2` },
-      { label: "Developer Tools", href: `${routes.apps}#pillar-3` },
-      { label: "Finance & Field Ops", href: `${routes.apps}#pillar-4` },
-    ],
-  },
-  { label: "Integrations", href: routes.integrations },
-  { label: "Portal Access", href: routes.pricing },
-  { label: "Docs", href: routes.docs },
+  { label: "Home", href: routes.home },
+  { label: "About", href: routes.about },
+  { label: "Services", href: routes.apps },
+  { label: "Blog", href: routes.blog },
+  { label: "Portfolio", href: routes.portfolio },
+  { label: "Contact", href: routes.contact },
 ] as const;
 
 export const footerLinks = {
-  core: [
-    { label: "Klaus Connect", href: `${routes.apps}#klaus-connect` },
-    { label: "Admin & Reports", href: `${routes.apps}#klaus-admin` },
-    { label: "Customer Portal", href: `${routes.apps}#customer-portal` },
+  services: [
+    { label: "IT Consulting & Strategy", href: `${routes.apps}#it-consulting` },
+    { label: "Apps Built for You", href: `${routes.apps}#custom-apps` },
+    { label: "System Integration", href: `${routes.apps}#system-integration` },
+    { label: "Smart Automation & AI", href: `${routes.apps}#automation-ai` },
   ],
-  ai: [
-    { label: "CRM Intelligence & AI Call", href: `${routes.apps}#crm-intelligence` },
-    { label: "n8n Console", href: `${routes.apps}#n8n-console` },
-    { label: "MailAgent", href: `${routes.apps}#mailagent` },
+  solutions: [
+    { label: "Data & Analytics", href: `${routes.apps}#data-analytics` },
+    { label: "Cloud Services", href: `${routes.apps}#cloud-services` },
+    { label: "CRM", href: `${routes.apps}#custom-apps` },
+    { label: "Voice AI Agent", href: `${routes.apps}#automation-ai` },
   ],
-  devFinance: [
-    { label: "FileMaker Analyzer", href: `${routes.apps}#filemaker` },
-    { label: "Spendledger", href: `${routes.apps}#spendledger` },
-    { label: "QuickBooks Payment", href: `${routes.apps}#spendledger` },
-    { label: "Field Apps (KLR & Roof)", href: `${routes.apps}#field-apps` },
+  company: [
+    { label: "Home", href: routes.home },
+    { label: "About Us", href: routes.about },
+    { label: "Blog", href: routes.blog },
+    { label: "Our Services", href: routes.apps },
+    { label: "Portfolio", href: routes.portfolio },
+    { label: "Contact", href: routes.contact },
   ],
-  resources: [
-    { label: "Documentation", href: routes.docs },
-    { label: "API Reference", href: `${routes.docs}#api` },
-    { label: "n8n Templates", href: `${routes.docs}#templates` },
-    { label: "Portal Status", href: `${routes.docs}#status` },
-    { label: "Contact", href: `${routes.docs}#contact` },
+  contact: [
+    { label: "support@klausway.com", href: "mailto:support@klausway.com" },
+    { label: "(860) 771-9058", href: "tel:+18607719058" },
+    {
+      label: "North Windham, CT",
+      href: "https://maps.google.com/?q=29+Northridge+Drive+North+Windham+CT+06256",
+    },
   ],
 } as const;

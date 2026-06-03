@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Features } from "@/components/features";
+import { ServicesSection } from "@/components/services-section";
 import { PageHeader } from "@/components/page-header";
 import { CtaSection } from "@/components/cta-section";
+import { servicesPageHeader } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Apps & Pillars",
-  description:
-    "Explore all 9 Klaus Way portal apps across four pillars — CRM, AI automation, developer tools, and finance.",
+  title: "Our Services",
+  description: servicesPageHeader.subtitle,
 };
 
 export default function AppsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Klaus Way Apps Portal Ecosystem"
+        eyebrow="Klaus Way"
         title={
           <>
-            Nine apps,{" "}
-            <span className="text-gradient-animated">one connected portal</span>
+            Our{" "}
+            <span className="text-gradient-animated">Services</span>
           </>
         }
-        description="From Klaus Connect CRM to n8n automation and field service tools — every app shares data, workflows, and single sign-on."
+        description={servicesPageHeader.subtitle}
       />
-      <Features />
+      <ServicesSection showHeader={false} />
       <CtaSection />
     </>
   );

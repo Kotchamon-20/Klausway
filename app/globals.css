@@ -348,3 +348,13 @@ body {
     box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
   }
 }
+
+/* Vapi Chat Widget — positioned via #vapi-widget-root in layout */
+#vapi-widget-root vapi-widget {
+  display: block;
+}
+
+#vapi-support-btn,
+.vapi-btn {
+  z-index: 9999 !important;
+}

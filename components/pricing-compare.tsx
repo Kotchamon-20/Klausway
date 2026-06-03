@@ -241,7 +241,7 @@ function PricingPlans() {
             )}
           </div>
           <Link
-            href={`${routes.docs}#contact`}
+            href={routes.contact}
             className={`mt-6 block rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-all ${
               plan.highlight
                 ? "bg-white text-black hover:shadow-lg hover:shadow-white/20"

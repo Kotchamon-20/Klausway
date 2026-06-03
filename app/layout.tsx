@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollProgressClient } from "@/components/scroll-progress-client";
+import { VapiChatWidget } from "@/components/vapi-chat-widget";
 import { brand } from "@/lib/brand";
 import { assetPath } from "@/lib/asset-path";
 import "./globals.css";
@@ -15,26 +16,25 @@ export const metadata: Metadata = {
     apple: assetPath("/Logo.jpg"),
   },
   title: {
-    default: `${brand.portal} — Modern Business Operations & Automation Ecosystem`,
-    template: `%s · ${brand.portal}`,
+    default: `${brand.name} — Strategic IT Solutions for Business Growth`,
+    template: `%s · ${brand.name}`,
   },
   description:
-    "The central gateway for modern business operations, automation, and seamless workflows. Klaus Connect CRM, AI voice, n8n automation, FileMaker tools, and more — unified in one portal.",
+    "Comprehensive IT solutions designed to drive your business forward. IT consulting, custom apps, system integration, smart automation, data analytics, and cloud services.",
   keywords: [
     "Klaus Way",
-    "Klaus Connect",
+    "IT consulting",
+    "custom software",
     "CRM",
+    "system integration",
     "business automation",
-    "n8n",
-    "Voice AI",
-    "FileMaker",
-    "customer portal",
-    "workflow automation",
+    "cloud migration",
+    "data analytics",
   ],
   openGraph: {
-    title: `${brand.portal} — Your Central Business Gateway`,
+    title: `${brand.name} — Strategic IT Solutions`,
     description:
-      "Universal CRM, AI & automation, developer tools, and finance — all connected in one ecosystem.",
+      "Transform your digital infrastructure with custom apps, integration, automation, and cloud expertise.",
     locale: "en_US",
     type: "website",
   },
@@ -55,6 +55,7 @@ export default function RootLayout({
         <Navbar />
         <main className="relative">{children}</main>
         <Footer />
+        <VapiChatWidget />
       </body>
     </html>
   );

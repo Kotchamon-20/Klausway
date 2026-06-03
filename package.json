@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:clean": "rm -rf .next && next dev --turbopack",
-    "build": "rm -rf .next && next build",
-    "build:pages": "rm -rf .next out && GITHUB_PAGES=true next build",
+    "dev:clean": "npm run stop:dev && sleep 1 && rm -rf .next && next dev --turbopack",
+    "stop:dev": "pkill -f 'next dev' 2>/dev/null || true; pkill -f 'next-server' 2>/dev/null || true",
+    "prebuild": "pgrep -f 'next dev' >/dev/null 2>&1 && (echo '' && echo 'Stop dev server first (Ctrl+C), then run build again.' && echo '' && exit 1) || exit 0",
+    "build": "next build",
+    "build:clean": "npm run stop:dev && rm -rf .next && next build",
+    "prebuild:pages": "npm run prebuild",
+    "build:pages": "GITHUB_PAGES=true next build",
+    "build:pages:clean": "npm run stop:dev && rm -rf .next out && GITHUB_PAGES=true next build",
     "start": "next start",
     "lint": "next lint"
   },

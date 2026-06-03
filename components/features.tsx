@@ -40,17 +40,16 @@ export function Features() {
         <Reveal className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
-            Klaus Way Apps Portal Ecosystem
+            Our Services
           </div>
           <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
-            One portal,{" "}
-            <span className="text-gradient-animated">four pillars</span>
+            Comprehensive IT solutions
             <br />
-            of business power
+            <span className="text-gradient-animated">built for your business</span>
           </h2>
           <p className="mt-5 text-balance text-lg text-muted-foreground">
-            The central gateway for modern business operations, automation,
-            and seamless workflows — every app connected, every team aligned.
+            From custom apps and CRM to automation, analytics, and cloud —
+            each solution is built and delivered separately for how you work.
           </p>
         </Reveal>
 
@@ -155,7 +154,7 @@ function FeatureRow({
           className="group/learn mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-brand-300 transition-colors hover:text-brand-200"
         >
           <span className="relative inline-flex items-center">
-            Open app
+            Open solution
             <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-brand-300 transition-all duration-300 group-hover/learn:w-full" />
           </span>
           <svg

@@ -40,9 +40,9 @@ export function Reveal({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        (entry.target as HTMLElement).dataset.reveal = entry.isIntersecting
-          ? "visible"
-          : "hidden";
+        const target = entry.target as HTMLElement;
+        if (!target.isConnected) return;
+        target.dataset.reveal = entry.isIntersecting ? "visible" : "hidden";
       },
       { threshold, rootMargin },
     );

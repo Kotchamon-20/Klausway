@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { navItems, routes } from "@/lib/navigation";
@@ -12,7 +12,6 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -27,7 +26,6 @@ export function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setOpenDropdown(null);
   }, [pathname]);
 
   const isActive = (href: string) => {
@@ -50,71 +48,28 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {navItems.map((item) =>
-            "children" in item ? (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => setOpenDropdown(item.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "flex items-center gap-1 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-foreground",
-                    isActive(item.href)
-                      ? "text-foreground"
-                      : "text-muted-foreground",
-                  )}
-                >
-                  {item.label}
-                  <ChevronDown className="h-3.5 w-3.5" />
-                </Link>
-                {openDropdown === item.label && (
-                  <div className="absolute left-0 top-full pt-2">
-                    <div className="min-w-[220px] rounded-xl border border-white/10 bg-background/95 p-2 shadow-2xl backdrop-blur-xl">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "rounded-lg px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-foreground",
-                  isActive(item.href)
-                    ? "text-foreground"
-                    : "text-muted-foreground",
-                )}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={cn(
+                "rounded-lg px-3 py-2 text-sm transition-colors hover:bg-white/5 hover:text-foreground",
+                isActive(item.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground",
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            href={routes.docs}
-            className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Sign in
-          </Link>
-          <Link
-            href={routes.pricing}
+            href={routes.contact}
             className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition-all hover:bg-white/90 hover:shadow-lg hover:shadow-white/10"
           >
-            Access Portal
+            Contact Us
             <svg
               className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
               fill="none"
@@ -148,42 +103,25 @@ export function Navbar() {
         <div className="border-t border-white/5 bg-background/95 backdrop-blur-xl lg:hidden">
           <nav className="flex flex-col gap-1 px-6 py-4">
             {navItems.map((item) => (
-              <div key={item.label}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "block rounded-lg px-3 py-2.5 text-sm hover:bg-white/5 hover:text-foreground",
-                    isActive(item.href)
-                      ? "text-foreground"
-                      : "text-muted-foreground",
-                  )}
-                >
-                  {item.label}
-                </Link>
-                {"children" in item &&
-                  item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="block rounded-lg py-2 pl-6 pr-3 text-sm text-muted-foreground hover:text-foreground"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-              </div>
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "block rounded-lg px-3 py-2.5 text-sm hover:bg-white/5 hover:text-foreground",
+                  isActive(item.href)
+                    ? "text-foreground"
+                    : "text-muted-foreground",
+                )}
+              >
+                {item.label}
+              </Link>
             ))}
             <div className="mt-2 flex flex-col gap-2 border-t border-white/5 pt-4">
               <Link
-                href={routes.docs}
-                className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground"
-              >
-                Sign in
-              </Link>
-              <Link
-                href={routes.pricing}
+                href={routes.contact}
                 className="rounded-lg bg-white px-3 py-2.5 text-center text-sm font-medium text-black"
               >
-                Access Portal
+                Contact Us
               </Link>
             </div>
           </nav>

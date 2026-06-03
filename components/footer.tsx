@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { footerLinks, routes } from "@/lib/navigation";
+import { brand } from "@/lib/brand";
 
 const cols = [
-  { title: "Core Business", items: footerLinks.core },
-  { title: "AI & Automation", items: footerLinks.ai },
-  { title: "Developer & Finance", items: footerLinks.devFinance },
-  { title: "Resources", items: footerLinks.resources },
+  { title: "Services", items: footerLinks.services },
+  { title: "Solutions", items: footerLinks.solutions },
+  { title: "Company", items: footerLinks.company },
+  { title: "Contact", items: footerLinks.contact },
 ];
 
 export function Footer() {
@@ -19,8 +20,8 @@ export function Footer() {
               <Logo height={36} />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              The central gateway for modern business operations, automation,
-              and seamless workflows. One portal, nine apps, infinite possibilities.
+              Strategic IT solutions for long-term business growth. Custom apps,
+              system integration, automation, and cloud — built for how you work.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {["X", "Fb", "IG", "YT", "Li"].map((s) => (
@@ -36,7 +37,7 @@ export function Footer() {
             <div className="mt-6 flex items-center gap-2 rounded-lg border border-white/5 bg-card/40 px-3 py-2">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime-400" />
               <span className="text-xs text-muted-foreground">
-                All portal systems operational
+                24/7 support available
               </span>
             </div>
           </div>
@@ -64,7 +65,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/5 pt-8 md:flex-row md:items-center">
           <div className="text-xs text-muted-foreground">
-            © 2026 Klaus Way · Apps Portal Ecosystem
+            © 2026 {brand.name} · {brand.tagline}
           </div>
           <div className="flex items-center gap-5 text-xs text-muted-foreground">
             <a href="#" className="hover:text-foreground">
