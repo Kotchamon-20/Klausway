@@ -9,7 +9,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://kotchamon-20.github.io/unix29",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://kotchamon-20.github.io/Klausway",
   ),
   icons: {
     icon: assetPath("/Logo.jpg"),

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const basePath = isGitHubPages ? "/unix29" : "";
+const basePath = isGitHubPages ? "/Klausway" : "";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
